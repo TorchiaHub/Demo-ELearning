@@ -1,0 +1,27 @@
+# Local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencies and build output should never be added to this showcase repo
+node_modules/
+dist/
+build/
+coverage/
+
+# Private implementation folders from the original project
+client/
+server/
+shared/
+output/
+Azure clip generation/
+image reference/
+
+# Secrets, logs and local runtime files
+.env
+.env.*
+*.log
+*.sqlite
+*.db
+
