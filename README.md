@@ -1,126 +1,175 @@
 # MyLearn Enbital - Public Showcase
 
-> Public portfolio page for a private e-learning demo.  
-> This repository intentionally contains **documentation and media only**: no application source code, no private implementation files, no environment variables.
+> Una demo e-learning privata, raccontata pubblicamente senza esporre codice sorgente.  
+> Questo repository contiene solo documentazione, screenshot e media selezionati.
 
-MyLearn Enbital is a prototype for modern workplace-safety training: a guided learning experience where a desktop course player, a mobile companion and an avatar tutor work together in real time.
+## Il Problema
 
-The demo was built as a vertical slice to show how mandatory safety training can move beyond passive video lessons and become interactive, traceable and easier to evaluate.
+Molti corsi obbligatori di sicurezza sul lavoro sono ancora percepiti come contenuti passivi: video lunghi, slide lineari, test finale separato dal percorso. MyLearn Enbital nasce da una domanda diversa:
 
-## What This Project Demonstrates
+**e se un corso obbligatorio potesse essere guidato, interattivo e verificabile passo dopo passo, senza perdere rigore formativo?**
 
-- A dual-device training flow: desktop as the teaching stage, phone as the interaction device.
-- An avatar tutor, Elena, that introduces topics and keeps the course experience guided.
-- A block-based learning architecture: each course step is a reusable narrative or interaction block.
-- Real-time synchronization between desktop and mobile companion.
-- Interactive safety exercises: hotspot selection, multiple choice, procedure ordering, scenario decisions, true/false sprint and risk classification.
-- A final quiz and a demo event log to show participation tracking.
-- A visual language designed for a B2B training product, not a generic slide deck.
+La demo mostra una possibile risposta: un'esperienza dual-screen in cui il desktop diventa il palco didattico, il telefono diventa lo strumento operativo dello studente e un avatar tutor accompagna ogni blocco della lezione.
+
+## Cosa Mostra La Demo
+
+- Un avatar tutor, Elena, integrato nel course player.
+- Un sistema a blocchi indipendenti, progettato per costruire corsi modificabili e riutilizzabili.
+- Spiegazioni brevi e progressive, alternate a micro-verifiche.
+- Mappe concettuali e card didattiche che seguono in tempo reale il parlato dell'avatar.
+- Un companion mobile usato per navigare, rispondere, classificare rischi e prendere decisioni.
+- Sincronizzazione realtime tra desktop e telefono.
+- Un quiz finale e un event log dimostrativo per raccontare tracciabilita e partecipazione.
 
 ## Demo Preview
+
+> Gli screenshot attuali sono placeholder di lavoro e verranno sostituiti con una nuova sessione di capture aggiornata.
 
 ### Dashboard
 
 ![Dashboard preview](assets/screenshots/dashboard.png)
 
-### Course Entry And Avatar
+### Ingresso Corso E Avatar
 
 ![Course home preview](assets/screenshots/course-home.png)
 
-### Mobile Pairing
+### Pairing Desktop-Mobile
 
 ![Pairing preview](assets/screenshots/pairing.png)
 
-### Concept Map Lesson
+### Blocco Formativo Con Mappa Concettuale
 
 ![Concept map preview](assets/screenshots/concept-map.png)
 
-### Live Interaction
+### Interazione Live
 
 ![Interaction preview](assets/screenshots/interaction.png)
 
-### Mobile Companion
+### Companion Mobile
 
 ![Mobile companion preview](assets/screenshots/mobile-companion.png)
 
-## Avatar Media Samples
+## Avatar Pipeline
 
-GitHub README rendering is limited, so video files are linked directly here. For the best public portfolio result, use a short edited MP4 walkthrough hosted through a GitHub Issue, Release asset, YouTube, Vimeo or a personal portfolio page.
+Uno degli aspetti centrali del progetto e la pipeline di generazione dell'avatar.
+
+I testi dell'avatar sono stati scritti e revisionati manualmente per ogni blocco della lezione: dal benvenuto iniziale fino al test finale. A partire da questi testi e stato creato uno script automatico capace di produrre in sequenza tutti gli asset necessari al corso.
+
+La pipeline combina due servizi separati:
+
+- **ElevenLabs** per la generazione della voce.
+- **HeyGen** per l'avatar video con lip sync.
+
+Il processo e stato pensato per trasformare un copione didattico in asset pronti per la web app:
+
+1. testo del blocco formativo;
+2. generazione della voce;
+3. generazione del video avatar sincronizzato sul parlato;
+4. esportazione iniziale in MP4 con green screen;
+5. rimozione del green screen;
+6. conversione in **WebM VP9 con canale alpha**, cosi l'avatar puo essere sovrapposto all'interfaccia senza sfondo visibile;
+7. integrazione delle clip nel course player.
+
+Questa scelta permette di mantenere Elena come presenza visiva stabile dentro l'esperienza, senza trattarla come un semplice video incollato sopra una pagina.
+
+### Media Sample
 
 - [Elena dashboard intro sample](assets/media/elena-avatar-dashboard.webm)
 - [Elena interaction sample](assets/media/elena-avatar-sample.webm)
+
+## Sistema A Blocchi
+
+La demo non e costruita come una sequenza rigida di slide. Il corso e composto da blocchi indipendenti: ogni blocco puo essere progettato, modificato o sostituito senza dipendere dagli altri.
+
+Il blocco principale e il **blocco formativo**. Qui l'avatar espone il contenuto piu lungo, mentre il desktop mostra due livelli di supporto:
+
+- **card didattiche**, che approfondiscono i punti del discorso;
+- **mappa concettuale**, che tiene traccia degli argomenti trattati.
+
+Entrambi gli elementi si aggiornano in tempo reale seguendo il parlato dell'avatar. In questo modo lo studente non ascolta soltanto una spiegazione: vede il ragionamento prendere forma, passaggio dopo passaggio.
+
+Accanto ai blocchi formativi ci sono blocchi di verifica rapida. L'idea deriva dal micro-learning: invece di concentrare tutta la valutazione in un test finale dopo una lunga spiegazione, il sistema alterna spiegazione breve, esercizio immediato e avanzamento progressivo.
+
+More detail: [Block Architecture](docs/block-architecture.md)
+
+## Dual Screen: Desktop E Telefono
+
+Il desktop non e pensato come unico punto di controllo. Nella demo il desktop e lo schermo didattico: mostra avatar, contenuti, mappe, scenari e risultati. Il telefono e invece il protagonista operativo: permette di avanzare, confermare, rispondere e prendere decisioni.
+
+Nella versione locale, il collegamento funziona sulla stessa rete LAN. In una versione online, il principio sarebbe lo stesso ma distribuito su web: desktop e telefono aprirebbero due indirizzi della stessa applicazione, associati alla stessa sessione tramite codice o QR, e comunicherebbero attraverso una connessione realtime WebSocket/Socket.IO.
+
+La parte importante non e il QR in se, ma il modello d'uso: lo studente guarda il contenuto sullo schermo grande e agisce dal dispositivo che ha gia in mano.
+
+## Evoluzione Prevista
+
+Se la demo verra approvata, il passo successivo sara un sistema di authoring assistito.
+
+L'obiettivo non e generare contenuti normativi da zero. Il sistema partirebbe esclusivamente da informazioni gia verificate, rodate e garantite sui corsi obbligatori di sicurezza. A partire da quei materiali, aiuterebbe a costruire:
+
+- il discorso dell'avatar;
+- le informazioni da mostrare nei blocchi formativi;
+- le card didattiche;
+- le mappe concettuali;
+- gli esercizi coerenti con ciascun blocco.
+
+La revisione umana resterebbe obbligatoria in ogni fase. Non solo per ragioni normative, ma per una scelta progettuale: nella formazione sulla sicurezza, l'automazione deve velocizzare la produzione, non sostituire la responsabilita editoriale e didattica.
 
 ## Architecture At A Glance
 
 ```mermaid
 flowchart LR
-    A["Desktop course player"] --> B["Course block engine"]
-    C["Mobile companion"] --> B
-    B --> D["Realtime sync layer"]
-    D --> A
-    D --> C
-    B --> E["Demo event log"]
-    F["Avatar tutor"] --> A
+    A["Verified course material"] --> B["Human reviewed script"]
+    B --> C["Avatar audio and video pipeline"]
+    C --> D["Block-based course"]
+    D --> E["Desktop learning stage"]
+    D --> F["Mobile companion"]
+    E <--> G["Realtime session sync"]
+    F <--> G
+    G --> H["Demo event log"]
 ```
 
-The course is organized as a sequence of blocks. Some blocks explain concepts, some ask the learner to act from the phone, and some summarize or evaluate progress. The important idea is that each block has a clear role in the learning journey and can be composed into a course without treating the lesson as a static video.
+## Tecnologie Usate Nel Progetto Privato
 
-More detail: [Block Architecture](docs/block-architecture.md)
+La build privata e stata realizzata con:
 
-## Learning Flow
-
-1. The learner enters from a dashboard.
-2. The desktop opens the course player and introduces Elena, the avatar tutor.
-3. The learner pairs a phone using a QR code or companion code.
-4. The desktop presents the lesson, scenarios and visual feedback.
-5. The phone becomes the active input device for answers, confirmations and decisions.
-6. The final quiz reviews the key safety concepts and produces a demo summary.
-
-## Technologies Used In The Private Build
-
-The private implementation was built with:
-
-- React 18, TypeScript and Vite
+- React 18, TypeScript e Vite
 - CSS Modules
 - Zustand
 - Framer Motion
 - Lucide React
 - React Router
 - Socket.IO
-- Node.js and Express
+- Node.js ed Express
 - Zod
 - Vitest
+- HeyGen
+- ElevenLabs
+- pipeline video WebM VP9 alpha
 
-Only the product concept, visuals and architecture notes are public in this repository.
+## Scope E Riservatezza
 
-## Scope And Confidentiality
+Questo repository non include:
 
-This repository does not include:
+- codice frontend;
+- codice backend;
+- tipi TypeScript condivisi;
+- script privati;
+- file `.env`;
+- log di sviluppo;
+- payload API o dettagli implementativi interni;
+- documentazione non sanificata del progetto privato.
 
-- frontend source code;
-- backend source code;
-- shared TypeScript types;
-- private scripts;
-- `.env` files;
-- raw project logs;
-- proprietary course internals beyond the public-facing concept.
-
-The goal is to let recruiters and evaluators understand the product thinking, architecture and final user experience without exposing the private demo implementation.
+Il suo scopo e permettere a recruiter, valutatori e stakeholder di comprendere idea, architettura, qualita visuale e direzione prodotto senza esporre l'implementazione privata.
 
 ## Media Publishing Notes
 
-For a polished public README, add a short walkthrough video near the top:
+Per una presentazione pubblica efficace, il README dovrebbe aprirsi con un breve video walkthrough:
 
 ```md
 [![Watch the demo](assets/screenshots/course-home.png)](https://your-video-link.example)
 ```
 
-Recommended video structure:
+GitHub README non e il luogo piu affidabile per embed video complessi. La soluzione consigliata e usare una thumbnail cliccabile che porti a un MP4 caricato su GitHub Release/Issue, YouTube, Vimeo o portfolio personale.
 
-- 5 seconds: dashboard and course entry.
-- 10 seconds: Elena avatar and QR/mobile pairing.
-- 20 seconds: desktop lesson plus mobile interaction.
-- 10 seconds: final quiz and tracking summary.
-
-More detail: [Media Publishing Guide](docs/media-publishing-guide.md)
+Per la nuova capture: [Demo Content Capture Plan](docs/demo-content-capture-plan.md)
 

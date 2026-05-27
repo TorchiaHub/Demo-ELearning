@@ -9,6 +9,8 @@ This repository is meant to be public while the implementation remains private. 
 - One or two short avatar clips.
 - One architecture diagram.
 
+For the current capture checklist, use [Demo Content Capture Plan](demo-content-capture-plan.md).
+
 ## What Not To Show
 
 - Source code.
@@ -55,4 +57,3 @@ Recommended export for GitHub/public portfolio:
 - 1080p or 720p.
 - 45-60 seconds.
 - Under 10 MB if using a free GitHub repository attachment workflow.
-
