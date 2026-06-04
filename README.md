@@ -43,9 +43,6 @@ La demo mostra una possibile risposta: un'esperienza dual-screen in cui il deskt
 
 ![Tap to identify preview](assets/screenshots/tap-to-identify.png)
 
-### Decisione Critica
-
-![Scenario decision preview](assets/screenshots/scenario-decision-critical.png)
 
 ### Semaforo Del Rischio
 
