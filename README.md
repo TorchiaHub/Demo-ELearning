@@ -1,11 +1,11 @@
-# MyLearn Enbital - Public Showcase
+# E-Learning - Public Showcase
 
 > Una demo e-learning privata, raccontata pubblicamente senza esporre codice sorgente.  
 > Questo repository contiene solo documentazione, screenshot e media selezionati.
 
 ## Il Problema
 
-Molti corsi obbligatori di sicurezza sul lavoro sono ancora percepiti come contenuti passivi: video lunghi, slide lineari, test finale separato dal percorso. MyLearn Enbital nasce da una domanda diversa:
+Molti corsi obbligatori di sicurezza sul lavoro sono ancora percepiti come contenuti passivi: video lunghi, slide lineari, test finale separato dal percorso. Questa demo nasce da una domanda diversa:
 
 **e se un corso obbligatorio potesse essere guidato, interattivo e verificabile passo dopo passo, senza perdere rigore formativo?**
 
@@ -179,14 +179,3 @@ Questo repository non include:
 
 Il suo scopo e permettere a recruiter, valutatori e stakeholder di comprendere idea, architettura, qualita visuale e direzione prodotto senza esporre l'implementazione privata.
 
-## Media Publishing Notes
-
-Per una presentazione pubblica efficace, il README dovrebbe aprirsi con un breve video walkthrough:
-
-```md
-[![Watch the demo](assets/screenshots/course-home.png)](https://your-video-link.example)
-```
-
-GitHub README non e il luogo piu affidabile per embed video complessi. La soluzione consigliata e usare una thumbnail cliccabile che porti a un MP4 caricato su GitHub Release/Issue, YouTube, Vimeo o portfolio personale.
-
-Per la nuova capture: [Demo Content Capture Plan](docs/demo-content-capture-plan.md)
