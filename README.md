@@ -23,27 +23,45 @@ La demo mostra una possibile risposta: un'esperienza dual-screen in cui il deskt
 
 ## Demo Preview
 
-> Gli screenshot attuali sono placeholder di lavoro e verranno sostituiti con una nuova sessione di capture aggiornata.
-
 ### Dashboard
 
-![Dashboard preview](assets/screenshots/dashboard.png)
+![Dashboard preview](assets/screenshots/dashboard-overview.png)
 
 ### Ingresso Corso E Avatar
 
-![Course home preview](assets/screenshots/course-home.png)
+![Course pairing preview](assets/screenshots/course-pairing-qr.png)
 
 ### Pairing Desktop-Mobile
 
-![Pairing preview](assets/screenshots/pairing.png)
+![Pairing preview](assets/screenshots/phone-connected.png)
 
 ### Blocco Formativo Con Mappa Concettuale
 
-![Concept map preview](assets/screenshots/concept-map.png)
+![Concept map preview](assets/screenshots/concept-map-machine-safety.png)
 
-### Interazione Live
+### Identificazione Dei Rischi
 
-![Interaction preview](assets/screenshots/interaction.png)
+![Tap to identify preview](assets/screenshots/tap-to-identify.png)
+
+### Decisione Critica
+
+![Scenario decision preview](assets/screenshots/scenario-decision-critical.png)
+
+### Semaforo Del Rischio
+
+![Risk traffic light preview](assets/screenshots/risk-traffic-light.png)
+
+### Quiz Finale
+
+![Final quiz preview](assets/screenshots/final-quiz-question.png)
+
+### Debrief Finale
+
+![Final report preview](assets/screenshots/final-report.png)
+
+### Presa Visione
+
+![Acknowledgement preview](assets/screenshots/acknowledgement.png)
 
 ### Companion Mobile
 
@@ -172,4 +190,3 @@ Per una presentazione pubblica efficace, il README dovrebbe aprirsi con un breve
 GitHub README non e il luogo piu affidabile per embed video complessi. La soluzione consigliata e usare una thumbnail cliccabile che porti a un MP4 caricato su GitHub Release/Issue, YouTube, Vimeo o portfolio personale.
 
 Per la nuova capture: [Demo Content Capture Plan](docs/demo-content-capture-plan.md)
-
